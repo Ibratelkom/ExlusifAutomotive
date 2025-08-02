@@ -1,0 +1,257 @@
+::-webkit-scrollbar{
+    width: 0;
+ }
+
+ *{
+    margin: 0;
+    padding: 0;
+    height: auto;
+   
+}
+
+
+.opening{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;        
+    z-index: 0; 
+}
+
+
+.opening1{
+    height: 270px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+
+} 
+
+.logoA{
+    width: auto;
+    height: 100px;
+    border-radius: 6px;
+    position: absolute;
+    left:max(calc(200px * 3 ), 100%);
+    animation-name:scrollleft ;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+ }
+ 
+ @keyframes scrollleft {
+     to{
+         left: -200px;
+     }
+     
+ }
+ .logo1{
+     animation-delay: calc(5s / 3  * (3 - 1) * -1);
+ }
+ 
+ .logo2{
+     animation-delay: calc(5s / 3 * (3 - 2) * -1);
+ }
+ 
+ .logo3{
+     animation-delay: calc(5s / 3 * (3 - 3) * -1);
+ }
+
+ .logoA{
+    width: 90%;
+    max-width: 1536px;
+    margin-inline:auto ;
+    position: relative;
+    height: 350px;
+    margin-top: 20px;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right, 
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1)40%,
+        rgba(0, 0, 0, 1)80%,
+        rgba(0, 0, 0, 0)
+        );
+ }
+ 
+ .logoA img{
+     height: 180px;
+     width: 350px;
+ }
+
+
+.Logistics{
+    margin-right: 35px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.Logistics h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    position: absolute;
+    color: #e9eaec;
+    -webkit-text-stroke: 0.1vw #000000 ;
+    text-transform:uppercase;
+}
+
+.Logistics h4::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: rgb(0, 0, 0);
+    border-right: 2px solid rgb(0, 0, 0);
+    -webkit-text-stroke: 0vw #ffffff ;
+    z-index: 1;
+    overflow: hidden;
+    animation: animasi 4s linear infinite;
+}
+
+@keyframes animasi {
+    0%, 10%,100%{
+        width: 0;
+    }
+    70%, 90%{
+        width: 100%;
+    }
+}
+
+.opening2{
+    height: 270px;
+    width: 100%;
+    margin-top:350px;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    transition: .5s ease-in-out;
+
+}
+
+.komodityA{
+    width: auto;
+    height: 100px;
+    border-radius: 6px;
+    position: absolute;
+    right:max(calc(-200px * 3 ), 100%);
+    animation-name:scrollright ;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+ }
+ 
+ @keyframes scrollright {
+     to{
+         right: -200px;
+     }
+     
+ }
+ .komodity1{
+     animation-delay: calc(5s / 3 * (3 + 1) * -1);
+ }
+ 
+ .komodity2{
+     animation-delay: calc(5s / 3 * (3 + 2) * -1);
+ }
+ 
+ .komodity3{
+     animation-delay: calc(5s / 3 * (3 + 3) * -1);
+ }
+
+ .komodity{
+    width: 90%;
+    max-width: 1536px;
+    position: relative;
+    height: 350px;
+    background-color:none;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to left, 
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1)40%,
+        rgba(0, 0, 0, 1)80%,
+        rgba(0, 0, 0, 0)
+        );
+ }
+ 
+ .komodity img{
+     height: 180px;
+     width: 350px;
+ }
+
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(to bottom, #000, #111);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #f9d342;
+      letter-spacing: 3px;
+    }
+
+    .car-section {
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .car {
+      background-color: #1a1a1a;
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .car img {
+      max-width: 100%;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .car h2 {
+      font-size: 2rem;
+      color: #f9d342;
+    }
+
+    .car.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #111;
+      color: #777;
+    }

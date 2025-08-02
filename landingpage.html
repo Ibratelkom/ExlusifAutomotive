@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Automotive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+        
+        ::-webkit-scrollbar{
+          width: 0;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background-color: #000;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-container {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+        }
+        
+        .model-slide {
+            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        .model-slide:hover {
+            transform: scale(1.03);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .performance-item {
+            border-left: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .performance-item:hover {
+            border-left-color: #ff0000;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .contact {
+            padding: 60px 20px;
+            background-color:none;
+            text-align: center;
+            width:500px;
+            margin-right: 70px;
+            margin-left: 40px;
+        }
+
+        .contact h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        form#contactForm {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form#contactForm input,
+        form#contactForm textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form#contactForm button {
+            padding: 12px;
+            background-color: #f83131;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+           transition: background-color 0.3s;
+        }
+
+       form#contactForm button:hover {
+            background-color: transparent;
+            border: 1px solid #ffffff;
+        }
+
+        #formMessage {
+            margin-top: 15px;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="fixed w-full z-50 bg-black bg-opacity-60 backdrop-blur-sm py-4 px-8 flex justify-between items-center">
+        <div class="text-2xl font-bold">
+            <span class="text-red-600">EXCLUSIVE</span> AUTOMOTIVE
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#" class="nav-link text-white hover:text-gray-300">PRODUK</a>
+            <a href="#" class="nav-link text-white hover:text-gray-300">GALLERY</a>
+            <a href="#" class="nav-link text-white hover:text-gray-300">KEPEMILIKAN</a>
+            <a href="#" class="nav-link text-white hover:text-gray-300">MOTORSPORT</a>
+            <a href="#" class="nav-link text-white hover:text-gray-300">KONTAK</a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-search text-white cursor-pointer hover:text-red-600"></i>
+            <i class="fas fa-bars text-white cursor-pointer hover:text-red-600 md:hidden"></i>
+        </div>
+    </nav>
+
+    <div class="hero-container">
+        <video autoplay loop class="hero-video">
+            <source src="revueltovideo.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 flex items-center justify-center text-center">
+            <div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">REVUELTO</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">V12 hybrid HPEV pertama yang ada di Indonesia dari Exclusive Automotive</p>
+                <div class="flex justify-center space-x-4">
+                    <button class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full font-semibold transition-colors">TEMUKAN</button>
+                    <button class="border-2 border-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-semibold transition-colors">KONFIGURASI</button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 text-center">
+            <i class="fas fa-chevron-down text-white text-2xl animate-bounce cursor-pointer"></i>
+        </div>
+    </div>
+
+    
+    <section class="py-20 px-8 bg-black">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">PRODUK TERLARIS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+               
+                <div class="model-slide overflow-hidden hover:bg-red-600 rounded-lg">
+                    <div class="relative">
+                        <img src="revuelto.png" alt="Revuelto supercar in yellow color with aggressive angles, parked in a showroom with dramatic lighting" class="w-full">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                            <h3 class="text-2xl font-bold">REVUELTO</h3>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-red-600">NEW</span>
+                                <span class="text-gray-400">IDR 22.500.000.000</span>
+                                <span>1,001 HP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                <div class="model-slide overflow-hidden hover:bg-red-600 rounded-lg">
+                    <div class="relative">
+                        <img src="huracan.png" alt="Huracan supercar in matte orange with carbon fiber details, speeding on a racetrack" class="w-full">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                            <h3 class="text-2xl font-bold">HURACAN</h3>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-gray-400">IDR 6.000.000.000</span>
+                                <span>640 HP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                <div class="model-slide overflow-hidden hover:bg-red-600 rounded-lg">
+                    <div class="relative">
+                        <img src="aventador.png" alt="Urus luxury SUV in metallic grey, driving through mountainous terrain" class="w-full">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t  from-black to-transparent">
+                            <h3 class="text-2xl font-bold">AVENTADOR SVJ</h3>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-gray-400">IDR 22.000.000.000</span>
+                                <span>759 HP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-12">
+                <button class="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                    VIEW ALL MODELS
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="py-20 px-8 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">PEFORMA HEWAN BUAS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="revuelto.png" alt="Cutaway technical diagram of a V12 engine with carbon fiber components highlighted in red" class="w-full ">
+                </div>
+                <div>
+                    <div class="specs-grid gap-6">
+                        <div class="performance-item p-6">
+                            <div class="text-red-600 text-4x1 font-bold">6.5L</div>
+                            <div class="text-gray-300 mt-2">NATURALLY ASPIRATED V12</div>
+                        </div>
+                        <div class="performance-item p-6">
+                            <div class="text-red-600 text-4xl font-bold">3.0s</div>
+                            <div class="text-gray-300 mt-2">0-100 KM/H</div>
+                        </div>
+                        <div class="performance-item p-6">
+                            <div class="text-red-600 text-4xl font-bold">>350</div>
+                            <div class="text-gray-300 mt-2">TOP SPEED (KM/H)</div>
+                        </div>
+                        <div class="performance-item p-6"> 
+                            <div class="text-red-600 text-4xl font-bold">1,001</div>
+                            <div class="text-gray-300 mt-2">TOTAL POWER (HP)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <p class="text-gray-300 mb-6">
+                            Revuelto adalah mobil sport hibrida plug-in pertama dari Lamborghini, menggabungkan mesin V12 bertenaga tinggi dengan tiga motor listrik.
+                            Revuelto secara resmi menggantikan Aventador sebagai model flagship Lamborghini, menandai era baru bagi supercar Italia ini.  
+                        </p>
+                        <button class="border-2 border-white text-white hover:bg-white hover:text-black px-6 py-2 rounded-full font-semibold transition-colors">
+                            SPESIFIKASI
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-8 bg-black">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">GALLERY</h2>
+                <button class="flex items-center text-red-600 hover:text-red-500">
+                    LIHAT SEMUA
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
+                <div class="overflow-hidden rounded-lg hover-scale hover:bg-red-600 bg-gray-300">
+                    <img src="gt3rs 600.png" class="w-full">
+                </div>
+                <div class="overflow-hidden rounded-lg hover-scale hover:bg-red-600 bg-gray-300">
+                    <img src="Lamborghini_Aventador_600x400.png"  class="w-full">
+                </div>
+                <div class="overflow-hidden rounded-lg hover-scale hover:bg-red-600 bg-gray-300">
+                    <img src="Mclaren_Senna_600x400.png"  class="w-full">
+                </div>
+                <div class="overflow-hidden rounded-lg hover-scale hover:bg-red-600 bg-gray-300">
+                    <img src="McLaren_P1_GTR_2015_600x400.png"  class="w-full">
+                </div>
+                <div class="overflow-hidden rounded-lg hover-scale hover:bg-red-600 bg-gray-300">
+                    <img src="Porsche_600x400.png"  class="w-full">
+                </div>
+                <div class="overflow-hidden rounded-lg hover-scale hover:bg-red-600 bg-gray-300">
+                    <img src="Porsche_Boxster_600x400.png" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-8 bg-gradient-to-r from-black to-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">PENGALAMAN EKSKLUSIF ANDA</h2>
+            
+            <div class="flex flex-col md:flex-row items-center gap-7">
+                <div class="contact">
+                    <h2>Hubungi Kami</h2>
+                    <form id="contactForm">
+                        <input type="text" id="name" name="name" placeholder="Nama" required />
+                        <input type="email" id="email" name="email" placeholder="Email" required />
+                        <textarea id="message" name="message" rows="5" placeholder="Pesan Kamu" required></textarea>
+                    <button type="submit">Kirim Pesan</button>
+                    </form>
+                    <p id="formMessage"></p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">TEMUKAN SHOWROOM TERDEKAT ANDA</h3>
+                    <p class="text-gray-300 mb-6">
+                       Kunjungi dealer resmi Exclusive Automotive untuk merasakan model kami secara langsung dan berbicara dengan spesialis produk kami tentang opsi penyesuaian, pembiayaan, dan program kepemilikan.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-map-marker-alt text-red-600 mr-3 text-xl"></i>
+                            <span>Jaringan Internasional</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-cogs text-red-600 mr-3 text-xl"></i>
+                            <span>Kustomisasi Lengkap</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-trophy text-red-600 mr-3 text-xl"></i>
+                            <span>Manfaat Kepemilikan Eksklusif</span>
+                        </div>
+                    </div>
+                    
+                    <button class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full font-semibold transition-colors">
+                        LOKASI SHOWROOM
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 px-8">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">PRODUK</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Lamborghini</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Mclaren</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Porsche</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Limited Editions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">KEPEMILIKAN</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Garansi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Spare Parts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Layanan Keuangan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">MOTORSPORT</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">GT3</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Super Trofeo</li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">GT2</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Driving Academy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">PERUSAHAAN</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Karier</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Keberlanjutan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-2xl font-bold mb-4 md:mb-0">
+                        <span class="text-red-600">EXCLUSIVE</span> AUTOMOTIVE
+                    </div>
+                    <div class="flex space-x-6 mb-4 md:mb-0">
+                        <a href="#"><i class="fab fa-facebook-f text-gray-400 hover:text-white"></i></a>
+                        <a href="#"><i class="fab fa-instagram text-gray-400 hover:text-white"></i></a>
+                        <a href="#"><i class="fab fa-youtube text-gray-400 hover:text-white"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in text-gray-400 hover:text-white"></i></a>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm mt-8">
+                    <div>
+                        © 2025 Exclusive Automotive. All Rights Reserved.
+                    </div>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-white">Privacy Policy</a>
+                        <a href="#" class="hover:text-white">Terms of Use</a>
+                        <a href="#" class="hover:text-white">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        const video = document.querySelector('.hero-video');
+        if (video) {
+            video.addEventListener('error', function() {
+                this.parentNode.innerHTML = `
+                    <div class="absolute inset-0 bg-gradient-to-b from-black to-gray-900 flex items-center justify-center">
+                        <h2 class="text-4xl font-bold">EXCLUSIVE AUTOMOTIVE</h2>
+                    </div>
+                `;
+            });
+        }
+        
+       document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+        if (name && email && message) {
+        document.getElementById('formMessage').textContent = 'Thank you! Your message has been sent.';
+        this.reset();
+            } else {
+                 document.getElementById('formMessage').textContent = 'Please fill in all fields.';
+             }
+    });
+
+        // Mobile menu toggle would be implemented here
+    </script>
+</body>
+</html>
