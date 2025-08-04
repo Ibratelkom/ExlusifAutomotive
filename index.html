@@ -145,13 +145,6 @@
         <div class="text-2xl font-bold">
             <span class="text-red-600">EXCLUSIVE</span> AUTOMOTIVE
         </div>
-        <div class="hidden md:flex space-x-8">
-            <a href="#" class="nav-link text-white hover:text-gray-300">PRODUK</a>
-            <a href="#" class="nav-link text-white hover:text-gray-300">GALLERY</a>
-            <a href="#" class="nav-link text-white hover:text-gray-300">KEPEMILIKAN</a>
-            <a href="#" class="nav-link text-white hover:text-gray-300">MOTORSPORT</a>
-            <a href="#" class="nav-link text-white hover:text-gray-300">KONTAK</a>
-        </div>
         <div class="flex items-center space-x-4">
             <i class="fas fa-search text-white cursor-pointer hover:text-red-600"></i>
             <i class="fas fa-bars text-white cursor-pointer hover:text-red-600 md:hidden"></i>
@@ -447,22 +440,31 @@
         }
         
        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const message = document.getElementById('message').value.trim();
-
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
         if (name && email && message) {
-        document.getElementById('formMessage').textContent = 'Thank you! Your message has been sent.';
-        this.reset();
-            } else {
-                 document.getElementById('formMessage').textContent = 'Please fill in all fields.';
-             }
+            // Encode pesan untuk URL
+            const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+            const phoneNumber = '1234567890'; // Ganti dengan nomor WhatsApp Anda
+            const whatsappURL = `https://wa.me/${+6285290698590}?text=${whatsappMessage}`;
+            // Arahkan pengguna ke WhatsApp
+            window.open(whatsappURL, '_blank');
+            document.getElementById('formMessage').textContent = 'Redirecting to WhatsApp...';
+            document.getElementById('formMessage').style.color = 'green'; // Set message color to green
+            this.reset(); // Reset the form fields
+        } else {
+            document.getElementById('formMessage').textContent = 'Please fill in all fields.';
+            document.getElementById('formMessage').style.color = 'red'; // Set message color to red
+        }
     });
 
         // Mobile menu toggle would be implemented here
     </script>
 </body>
 </html>
+
 
 
